@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./components/Header";
 import Products from "./components/Products";
 import Footer from "./components/Footer";
+import Cart from "./components/Cart/Cart";
 
 const productsArr = [
   {
@@ -29,10 +30,16 @@ const productsArr = [
 
 function App() {
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <React.Fragment>
-      <Header />
-      <Products productsArr={productsArr}/>
+      <Header onShow={handleShow}/>
+      <Cart show={show} onClose={handleClose}/>
+      <Products productsArr={productsArr} onShow={handleShow}/>
       <Footer />
     </React.Fragment>
   )

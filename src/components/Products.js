@@ -6,7 +6,7 @@ const Products = (props) => {
     return (
         <Container className="d-flex justify-content-center align-items-center flex-column" fluid>
                 <ProductItems productsArr={props.productsArr}/>
-                <Button variant="secondary" className=" my-5"><a href="#cart" style={{textDecoration: "none", color: "white"}}>See the cart</a></Button>
+                <Button onClick={props.onShow} variant="secondary" className=" my-5"><a href="#cart" style={{textDecoration: "none", color: "white"}}>See the cart</a></Button>
         </Container>
     )
 }
