@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Products from "./components/Products";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./components/store/CartContextProvider";
 
 const productsArr = [
   {
@@ -36,12 +37,12 @@ function App() {
   const handleShow = () => setShow(true);
 
   return (
-    <React.Fragment>
-      <Header onShow={handleShow}/>
-      <Cart show={show} onClose={handleClose}/>
-      <Products productsArr={productsArr} onShow={handleShow}/>
+    <CartContextProvider>
+      <Header onShow={handleShow} />
+      <Cart show={show} onClose={handleClose} />
+      <Products productsArr={productsArr} onShow={handleShow} />
       <Footer />
-    </React.Fragment>
+    </CartContextProvider>
   )
 }
 
