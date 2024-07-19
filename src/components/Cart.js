@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import CartContext from '../store/cart-context';
+import CartContext from './store/cart-context';
 
 
 const Cart = (props) => {
