@@ -18,6 +18,7 @@ const NavBar = (props) => {
           <Nav.Link as={NavLink} to={'/'} className="mx-3">HOME</Nav.Link>
           <Nav.Link as={NavLink} to={'/store'} className="mx-3">STORE</Nav.Link>
           <Nav.Link as={NavLink} to={'/about'} className="mx-3">ABOUT</Nav.Link>
+          <Nav.Link as={NavLink} to={'/contact-us'} className="mx-3">CONTACT US</Nav.Link>
         </Nav>
         {location.pathname==='/store' &&
           <Button onClick={props.onShow} variant="outline-primary text-light border-2 rounded-3" className="position-relative ">Cart
