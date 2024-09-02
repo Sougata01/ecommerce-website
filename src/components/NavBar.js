@@ -20,7 +20,7 @@ const NavBar = (props) => {
           <Nav.Link as={NavLink} to={'/about'} className="mx-3">ABOUT</Nav.Link>
           <Nav.Link as={NavLink} to={'/contact-us'} className="mx-3">CONTACT US</Nav.Link>
         </Nav>
-        {location.pathname==='/store' &&
+        {location.pathname.startsWith('/store') &&
           <Button onClick={props.onShow} variant="outline-primary text-light border-2 rounded-3" className="position-relative ">Cart
             <Badge className="position-absolute top-0 start-100 translate-middle">{totalItems}</Badge>
           </Button>

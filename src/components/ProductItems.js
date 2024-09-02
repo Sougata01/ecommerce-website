@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import {Card, Button } from "react-bootstrap";
 import CartContext from "./store/cart-context";
 
 const ProductItems = (props) => {
@@ -7,30 +8,39 @@ const ProductItems = (props) => {
   const cartCtx = useContext(CartContext)
 
   return (
-    <Row className="d-flex justify-content-center">
-      {props.productsArr.map((product,index) => {
+    <div className='container'>
+      <div className="row d-flex justify-content-center">
+        {props.productsArr.map((product, index) => {
+          const newProduct = { id: `${index + 1}`, ...product, quantity: 1 };
 
-        const newProduct = {id: `${index+1}`, ...product,  quantity: 1}
-
-        return (
-          <Col key={newProduct.id} md="5" className="d-flex justify-content-center my-2">
-            <Card className="bg-image" style={{ width: '18rem', border: 0 }}>
-              <Card.Header className="text-center fs-5 fw-medium">{newProduct.title}</Card.Header>
-              <div style={{ overflow: "hidden" }}>
-                <Card.Img style={{ transition: 'transform 0.5s ease' }}
-                  onMouseEnter={e => e.target.style.transform = 'scale(1.5)'}
-                  onMouseLeave={e => e.target.style.transform = 'scale(1)'}
-                  variant="top" className="rounded-0 " src={newProduct.imageUrl} />
-              </div>
-              <Card.Body className="d-flex justify-content-between">
-                <p>Price: ${newProduct.price}</p>
-                <Button onClick={cartCtx.addToCart.bind(null,newProduct)} variant="primary">ADD TO CART</Button>
-              </Card.Body>
-            </Card>
-          </Col>)
-      })}
-    </Row>
-  )
+          return (
+            <div key={product.id} className="col-md-5 d-flex justify-content-center">
+              <Card className="container text-center" style={{ width: '18rem', border: 0 }}>
+                <Card.Header style={{ fontSize: "1.25rem", textAlign: "center", fontWeight: "bold" }}>
+                  <Link to={`/store/${newProduct.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    {product.title}
+                  </Link>
+                </Card.Header>
+                <div style={{ overflow: "hidden" }}>
+                  <Link to={`/store/${newProduct.id}`}>
+                    <Card.Img alt={product.name}
+                      style={{ transition: 'transform 0.5s ease' }}
+                      onMouseEnter={e => e.target.style.transform = 'scale(1.5)'}
+                      onMouseLeave={e => e.target.style.transform = 'scale(1)' }
+                      variant="top" className="rounded-0" src={product.imageUrl} />
+                  </Link>
+                </div>
+                <Card.Body className='d-flex justify-content-between'>
+                  <p>₹{product.price}</p>
+                  <Button variant="primary" onClick={cartCtx.addToCart.bind(null, newProduct)}>Add to Cart</Button>
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default ProductItems;

@@ -24,26 +24,26 @@ function Contect() {
         event.preventDefault();
         console.log(name, email, message, phoneNumber);
 
-        const contectData = {
+        const contactData = {
             name: name,
             email: email,
             message: message,
             phoneNumber: phoneNumber
         };
-        await addContactHandler(contectData);
+        await addContactHandler(contactData);
         setName('');
         setEmail('');
         setMessage('');
         setPhoneNumber('');
     };
 
-    async function addContactHandler(contectData) {
+    async function addContactHandler(contactData) {
         try {
             const response = await fetch(
                 'https://e-commerce-78210-default-rtdb.firebaseio.com/ContactData.json',
                 {
                     method: 'POST',
-                    body: JSON.stringify(contectData),
+                    body: JSON.stringify(contactData),
                     headers: {
                         'Content-Type': 'application/json',
                     },

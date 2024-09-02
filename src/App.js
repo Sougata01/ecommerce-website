@@ -5,6 +5,7 @@ import HomePage from "./pages/Home";
 import StorePage from "./pages/Store";
 import AboutPage from "./pages/About";
 import ContactUs from "./pages/ContactUs";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       { path: '/store', element: <StorePage /> },
       { path: '/about', element: <AboutPage /> },
       { path: '/contact-us', element: <ContactUs /> },
+      {
+        path: '/store/:productId',
+        element: <ProductPage /> // New route for individual product pages
+      },
     ]
   }
 ])
